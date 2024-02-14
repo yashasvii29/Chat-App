@@ -1,0 +1,14 @@
+# Ignore node modules
+node_modules/
+
+# Ignore package-lock.json
+package-lock.json
+
+#  Ignore environmental variables
+.env
+
+# Ignore .DS_Store
+.DS_Store
+
+
+
