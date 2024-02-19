@@ -32,6 +32,16 @@ ChatApp is a real-time messaging application that allows users to connect, commu
 - [ ] Group Chat
 - [ ] Emojis and Stickers
 
+## Dependency
+
+* Socket.io
+* Tailwind CCS
+* Reactjs
+* Javascript
+* Git Github Version Control
+* MongoDB Backend
+* Expressjs Server
+
 ## Getting Started
 
 ### Prerequisites
