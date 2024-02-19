@@ -37,7 +37,7 @@ ChatApp is a real-time messaging application that allows users to connect, commu
 * Socket.io
 * Tailwind CCS
 * Reactjs
-* Javascript
+* Vitejs
 * Git Github Version Control
 * MongoDB Backend
 * Expressjs Server
