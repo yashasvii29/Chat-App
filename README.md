@@ -1,6 +1,6 @@
 # Chat-App
 Project using frontend technologies like html,css,js,tailwindcss,reactjs and backend technologies like nodejs,expressjs and mongodb.
-# Ist-Mini-Project
+# Mini-Project
 This is first mini project in which  a web based application named Parking Management System is created using html,css,javascript and PHP.
 
 # Chat-App
