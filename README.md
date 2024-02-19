@@ -46,17 +46,20 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
    bash
+   
    git clone https://github.com/yashasvii29/Chat-App.git
+   
    cd chat-App
    
 
-2. Install backend dependencies:
+3. Install backend dependencies:
  
    nodejs
+   
    mongodb
 
 
-4. There will be server
+5. There will be server
 
   expressjs
    
@@ -66,18 +69,13 @@ Before you begin, ensure you have the following installed:
 
 
 - client
-  - book.html
-  - contactUs.html
-  - home.html
-  - index.html
-  - thankyou.html
+  - src
+  - public
 - server
-  - contactUs.css
-  - home.css
-  - style.css
+  - app.js
+  - package.json
 
- 
-  - 
+    
 ### Technologies Used
 
 - Frontend:
