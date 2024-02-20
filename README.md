@@ -1,7 +1,7 @@
 # Chat-App
 Project using frontend technologies like html,css,js,tailwindcss,reactjs and backend technologies like nodejs,expressjs and mongodb.
 # Mini-Project
-This is first mini project in which  a web based application named Parking Management System is created using html,css,javascript and PHP.
+This is second mini project in which a web based application named Real time Chatting Application is created using html,css,javascript tailwindcss , reactjs , expressjs , nodejs  and mongodb database.
 
 # Chat-App
 ChatApp is a real-time messaging application that allows users to connect, communicate, and share seamlessly. With a user-friendly interface, robust features such as multimedia support, customizable themes, and cross-platform compatibility, ChatApp provides a modern and engaging chatting experience. Ensure instant and secure communication with our easy-to-use, feature-rich chatting platform.
@@ -106,4 +106,5 @@ Contributions are welcome! To contribute to this project, follow these steps:
 - Create a new branch for your feature: git checkout -b feature-name.
 - Commit your changes: git commit -m 'Add some feature'.
 - Push to the branch: git push origin feature-name.
+-  Create a pull request explaining your changes.
 -  Create a pull request explaining your changes.
