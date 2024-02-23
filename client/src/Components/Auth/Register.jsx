@@ -6,7 +6,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
-import chatimg from "../Images/chatting.jpg";
+import chatimg from "../../assets/chatting.jpg";
 // import axios from "axios";
 import { Link} from "react-router-dom";
 

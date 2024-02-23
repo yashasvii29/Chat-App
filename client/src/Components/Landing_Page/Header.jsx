@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link,NavLink } from 'react-router-dom';
+import logoimg from '../../assets/conversation.png'
 
 export default function Header() {
     return (
@@ -8,7 +9,7 @@ export default function Header() {
                 <div className="flex  flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <Link to="/" className="flex items-center">
                         <img
-                            src="https://img.freepik.com/premium-vector/social-network-people-sit-social-networks-their-phones-send-chat-messages_491047-418.jpg?w=996"
+                            src={logoimg}
                             className="mr-3 h-14"
                             alt="Logo"
                         />
