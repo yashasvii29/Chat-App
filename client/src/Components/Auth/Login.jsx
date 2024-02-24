@@ -102,7 +102,7 @@ const Login = () => {
                     </span>
                   </span>
                 </div>
-                <div className="flex justify-evenly mt-6">
+                {/* <div className="flex justify-evenly mt-6">
                   <div className="w-12 h-12 border border-gray-600 rounded flex justify-center">
                     <GoogleIcon className="mt-3 hover:cursor-pointer" />
                   </div>
@@ -115,7 +115,7 @@ const Login = () => {
                   <div className="w-12 h-12 border border-gray-600 rounded flex justify-center hover:cursor-pointer">
                     <AppleIcon className="mt-3" />
                   </div>
-                </div>
+                </div> */}
               </form>
             </div>
               <div className="w-2/4 h-3/6 ml-12 mr-8 flex items-center rounded-3xl">

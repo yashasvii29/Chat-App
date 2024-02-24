@@ -152,11 +152,11 @@ const Register = () => {
                     Already have an account ?{" "}
                     <span className="text-blue-600 underline underline-offset-4 hover:cursor-pointer">
                       {" "}
-                      <Link to="/login">Login</Link>
+                      <Link to="/">Login</Link>
                     </span>
                   </span>
                 </div>
-                <div className="flex justify-evenly mt-3">
+                {/* <div className="flex justify-evenly mt-3">
                   <div className="w-10 h-10 border border-gray-600 rounded flex justify-center hover:cursor-pointer">
                     <GoogleIcon className="mt-2" />
                   </div>
@@ -169,7 +169,7 @@ const Register = () => {
                   <div className="w-10 h-10 border border-gray-600 rounded flex justify-center hover:cursor-pointer">
                     <AppleIcon className="mt-2" />
                   </div>
-                </div>
+                </div> */}
               </form>
             </div>
             <div className="w-2/4 h-3/6 ml-12 mr-8 flex items-center rounded-3xl">
