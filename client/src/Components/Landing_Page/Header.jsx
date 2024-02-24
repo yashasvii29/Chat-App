@@ -62,10 +62,6 @@ export default function Header() {
                                     About
                                 </NavLink>
                             </li>
-
-
-                            
-                            
                         </ul>
                     </div>
                 </div>
