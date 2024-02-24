@@ -5,6 +5,7 @@ import Register from './Components/Auth/Register'
 import Home from './Components/Landing_Page/Home'
 import Layout from './Components/Landing_Page/Layout'
 import About from './Components/Landing_Page/About'
+import Dashboard from './Components/Dashboard/Dashboard'
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           </Route>
 
         </Routes>
+       
       </BrowserRouter>
     </div>
   )
