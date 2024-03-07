@@ -7,25 +7,18 @@ import Layout from './Components/Landing_Page/Layout'
 import About from './Components/Landing_Page/About'
 import Dashboard from './Components/Dashboard/Dashboard'
 
-
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-
           <Route path='/' element={<Layout />}>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-
-
           </Route>
-
         </Routes>
-       
       </BrowserRouter>
     </div>
   )
