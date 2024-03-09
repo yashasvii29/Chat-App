@@ -6,7 +6,7 @@ import { FiSend } from "react-icons/fi";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-const Dashboard = () => {
+const Chatroom = () => {
 	const [text,setText]=useState('');
 	const [showEmoji,setEmoji]=useState(false);
 
@@ -164,4 +164,4 @@ const Dashboard = () => {
 	)
 }
 
-export default Dashboard
+export default Chatroom
