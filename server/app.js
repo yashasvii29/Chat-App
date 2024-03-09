@@ -8,8 +8,7 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 
 
-// models
-const Users = require('./models/User');
+
 
 
 // connect DB
