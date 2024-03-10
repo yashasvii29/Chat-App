@@ -6,11 +6,7 @@ var cors = require('cors');
 const authRoutes = require('./routes/apis/authRoutes');
 const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
-
-
-
-
-
+const userRoutes = require('./routes/apis/userRoutes');
 // connect DB
 const DB_url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zw6hky5.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -34,6 +30,7 @@ app.use(express.json());  // json data
 app.use(authRoutes);
 app.use(chatRoutes);
 app.use(messageRoutes);
+app.use(userRoutes);
 
 app.get('/' , (req,res)=>{
     res.send('Welcome to chat-app');
