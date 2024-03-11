@@ -7,7 +7,7 @@ const generateAuthToken = require('../../jwtTokenGenerator');
 router.post('/register',async (req, res) => {
     try{
         let user = req.body;
-    // console.log(user);
+    console.log(user);
     const Email = await User.findOne({email:user.email});
     if(Email){
         res.status(200).json({msg:'email already exist'});
@@ -34,33 +34,36 @@ router.post('/login',async(req,res)=>{
     try{
         let userFormData = req.body;
     // console.log(userFormData);
-            try{
-                let userDBInfo = await User.findOne({email:userFormData.email});      
-            }
+        
+            
+                let userDBInfo = await User.findOne({email:userFormData.email});    
+                 console.log(userDBInfo);   
+
+                 if(!userDBInfo){
+                    return res.status(400).json({msg:'create account first'});
+                }
+                // console.log(userDBInfo);
+                let validatePassword = await bcrypt.compare(userFormData.password,userDBInfo.password);
+                console.log(validatePassword);
+                if(!validatePassword){
+                    return res.status(400).json({msg:"Incorrect password"});
+                }
+                console.log(validatePassword);
+                const token = generateAuthToken(userDBInfo); 
+                console.log(token);
+                res.status(200).json({data:{
+                    token:token,
+                    userDBInfo:userDBInfo
+                },
+                msg:"Everything is fine,user loggedin"        
+            })
+         }
+
             catch(e){
+                console.log('something went wrong');
                 return res.status(400).json({msg:'login issue'});
             }
-            if(!userDBInfo){
-                return res.status(200).json({msg:'create account first'});
-            }
-            let validatePassword = await bcrypt.compare(userFormData.password,userDBInfo.password);
-            
-            if(!validatePassword){
-                return res.send("Incorrect password");
-            }
-            const token = generateAuthToken(userDBInfo); 
-            console.log(token);
-            res.status(200).json({data:{
-                token:token,
-                userDBInfo:userDBInfo
-            },
-            msg:"Everything is fine,user loggedin"        
-        })
-    }
-    catch(e){
-        res.status(400).json({msg:'something went wrong'});
-    }    
-})
+         })
 router.get('/logout',(req,res)=>{
     ()=>{
         req.logout();

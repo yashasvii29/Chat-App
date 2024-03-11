@@ -9,12 +9,13 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 const userRoutes = require('./routes/apis/userRoutes');
 // connect DB
-const DB_url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zw6hky5.mongodb.net/?retryWrites=true&w=majority`;
+// const DB_url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zw6hky5.mongodb.net/?retryWrites=true&w=majority`;
 
-mongoose.connect(DB_url , {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-})
+// mongoose.connect(DB_url , {
+//     useNewUrlParser: true, 
+//     useUnifiedTopology: true
+// })
+mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
 .then(()=>{
     console.log("DB connected successfully")
 })

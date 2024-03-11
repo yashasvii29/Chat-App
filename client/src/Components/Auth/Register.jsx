@@ -7,77 +7,24 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 import chatimg from "../../assets/chatting.jpg";
-// import axios from "axios";
-import { Link} from "react-router-dom";
+import axios from "axios";
+import { Link,useNavigate} from "react-router-dom";
 
 const Register = () => {
-  // const [email, setEmail] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [errors, setError] = useState({});
+  
+  let navigate = useNavigate();
+  let [input,setInput] = useState({
+    username:"",
+    password:"",
+    email:"",
+    gender:"",
+    profilePic:""
+  });
 
-  // const validateForm = () => {
-  //   const validationErrors = {};
-  //   if (username === "") {
-  //     validationErrors.username = "username is required";
-  //   } else if (username.length <= 5) {
-  //     validationErrors.username = "username is not valid";
-  //   }
-  //   if (email === "") {
-  //     validationErrors.email = "email is required";
-  //   } else if (
-  //     !email.match(
-  //       /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
-  //     )
-  //   ) {
-  //     validationErrors.email = "email you've entered is not valid";
-  //   }
-  //   if (password === "") {
-  //     validationErrors.password = "password is required";
-  //   } else if (password.length < 8) {
-  //     validationErrors.password = "password should be atleast 8 characters";
-  //   } else if (
-  //     !password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
-  //   ) {
-  //     validationErrors.password =
-  //       "password must contain at least 8 characters!";
-  //   }
-  //   return validationErrors;
-  // };
-
-  // const navigate = useNavigate("");
-
-  // const userNameChangeHandler = (e) => {
-  //   setUsername(e.target.value);
-  // };
-
-  // const passwordChangeHandler = (e) => {
-  //   setPassword(e.target.value);
-  // };
-
-  // const emailChangeHandler = (e) => {
-  //   setEmail(e.target.value);
-  // };
-
-  // async function registerUser(data) {
-  //   try {
-  //     const res = await axios.post("http://localhost:5000/user/register", data);
-  //     console.log(res);
-  //     navigate("/login");
-  //   } catch (error) {
-  //     console.error("Error registering user:", error);
-  //   }
-  // }
-
-  // const onSubmitHandler = (e) => {
-  //   e.preventDefault();
-  //   let errorsObj = validateForm();
-  //   setError(errorsObj);
-  //   if (Object.keys(errorsObj).length === 0) {
-  //     alert("Your account has been created");
-  //   }
-  //   registerUser({ username, email, password });
-  // };
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+   
+  }
   return (
     <div>
       <div className="h-screen bg-white w-full flex justify-center items-center novalidate">
@@ -85,7 +32,7 @@ const Register = () => {
           <div className="w-5/6 h-5/6 bg-cyan-50 rounded-2xl flex items-center">
             <div className="w-2/4 h-5/6 my-16 ml-8 bg-white  rounded-3xl">
               <h1 className="text-center p-2 text-xl font-medium">Register</h1>
-              <form noValidate >
+              <form onSubmit={onSubmitHandler} noValidate >
                 <div className="mt-5 flex justify-center items-center ">
                   <div className=" border-2 border-blue-200 rounded w-70 py-2 px-6 text-gray-700 ">
                     <PersonIcon className="pr-2" />
