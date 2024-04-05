@@ -30,7 +30,12 @@ ChatApp is a real-time messaging application that allows users to connect, commu
 - [ ] Notifications
 - [ ] Profile Editing
 - [ ] Group Chat
+- [ ] Video Call
+- [ ] Payment Blue Tick
 - [ ] Emojis and Stickers
+- [ ] Urgent Text Notification
+- [ ] Payment Blue Tick
+- [ ] Payment to chat with Filmstar
 
 ## Dependency
 
