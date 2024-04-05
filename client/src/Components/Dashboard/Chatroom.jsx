@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Avatar from '../../../src/assets/avatar.svg';
 import { SlCallOut } from "react-icons/sl";
 import { BsEmojiSmile } from "react-icons/bs";
-import { FiSend } from "react-icons/fi";
+import { FiMail, FiSend } from "react-icons/fi";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
@@ -110,24 +110,45 @@ const Chatroom = () => {
 						{/* chat ka content ke liye */}
 				<div className='h-[75%] w-full overflow-y-scroll shadow-sm borde-b'>
 					<div className='p-14'>
-						<div className=' max-w-[40%] bg-[#f7e1d7] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 						</div>
-						<div className=' max-w-[40%] bg-[#f19c79] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4 text-white mb-6'>
+						<div className=' max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4  mb-6'>
 						Lorem ipsum dolor sit amet.
 						</div>
 
-						<div className=' max-w-[40%] bg-[#f7e1d7] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 						</div>
-						<div className='max-w-[40%] bg-[#f19c79] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4 text-white mb-6'>
+						<div className='max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4  mb-6'>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 						</div>
 
-						<div className=' max-w-[40%] bg-[#f7e1d7] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 						</div>
-						<div className='max-w-[40%] bg-[#f19c79] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4 text-white mb-6'>
+						<div className='max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4 text-black mb-6'>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+						</div>
+
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+						</div>
+						<div className=' max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4  mb-6'>
+						Lorem ipsum dolor sit amet.
+						</div>
+
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+						</div>
+						<div className='max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4  mb-6'>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+						</div>
+
+						<div className=' max-w-[40%] bg-[#f5f1ed] rounded-b-xl rounded-tr-xl shadow-lg p-4 mb-6'>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+						</div>
+						<div className='max-w-[40%] bg-[#fbb1bd] rounded-b-xl rounded-tr-xl shadow-lg ml-auto p-4 text-black mb-6'>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 						</div>
 
@@ -165,3 +186,5 @@ const Chatroom = () => {
 }
 
 export default Chatroom
+
+

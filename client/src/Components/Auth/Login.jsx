@@ -1,54 +1,47 @@
 import React, { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
-import GoogleIcon from "@mui/icons-material/Google";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import AppleIcon from "@mui/icons-material/Apple";
+// import GoogleIcon from "@mui/icons-material/Google";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import AppleIcon from "@mui/icons-material/Apple";
 import chatimg from "../../assets/chatting.jpg";
-// import axios from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-//   let [username, setUsername] = useState("");
-//   let [password, setPassword] = useState("");
+  let [username, setUsername] = useState("");
+  let [password, setPassword] = useState("");
 
-//   const navigate = useNavigate("");
+  const navigate = useNavigate("");
 
-//   const userNameChangeHandler = (e) => {
-//     setUsername(e.target.value);
-//   };
-
-//   const passwordChangeHandler = (e) => {
-//     setPassword(e.target.value);
-//   };
-
-//   async function loginUser(data) {
-//     try {
-//       const res = await axios.post("http://localhost:5000/user/login", data);
-//       console.log(res);
-//       navigate("/");
-//     }
-//     catch (error) {
-//       console.error("Error in login user:", error.message);
-//       navigate("/login");
-//     }
-//   }
-//   const onSubmitHandler = (e) => {
-//     e.preventDefault();
-//     loginUser({ username, password });
-//   };
+  async function loginUser(data) {
+    try {
+      const res = await axios.post("http://localhost:8080/login", data);
+      console.log(res);
+      navigate("/chatroom");
+    }
+    catch (error) {
+      console.error("Error in login user:", error.message);
+      navigate("/login");
+    }
+  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(username,password);
+    loginUser({ username, password });
+  };
 
   return (
     <div>
       <div className="h-screen bg-white w-full flex justify-center items-center">
-        <div className="w-5/6 h-5/6 bg-teal-100 flex justify-center items-center rounded-xl  ">
-          <div className="w-5/6 h-5/6 bg-cyan-50 rounded-2xl flex items-center">
+        <div className="w-5/6 h-5/6  bg-[#f7cad0] flex justify-center items-center rounded-xl  ">
+          <div className="w-5/6 h-5/6 bg-[#edafb8] rounded-2xl flex items-center">
             <div className="w-2/4 h-5/6 my-16 ml-8 bg-white  rounded-3xl">
               <h1 className="text-center p-2 text-xl font-medium">Login</h1>
-              <form>
+              <form onSubmit={ onSubmitHandler}>
                 <div className="mt-5 flex justify-center items-center">
                   <div className=" border-2 border-blue-200 rounded w-70 py-2 px-6 text-gray-700 hover:cursor-pointer">
                     <PersonIcon className="pr-2" />
@@ -58,7 +51,8 @@ const Login = () => {
                       name="username"
                       type="text"
                       placeholder="Username"
-                    //   onChange={userNameChangeHandler}
+                      value={username} 
+                      onChange={e => setUsername(e.target.value)}
                       required
                     ></input>
                   </div>
@@ -72,12 +66,13 @@ const Login = () => {
                       name="password"
                       type="password"
                       placeholder="Password"
-                    //   onChange={passwordChangeHandler}
+                      value={password} 
+                      onChange={e => setPassword(e.target.value)}
                       required
                     ></input>
                   </div>
                 </div>
-                {/* <div className="ml-16 flex ">
+                <div className="ml-16 flex ">
                   <input
                     className="mr-2 leading-tight cursor-pointer"
                     type="checkbox"
@@ -86,7 +81,7 @@ const Login = () => {
                   <span className="ml-20 mr-8 text-blue-600 underline underline-offset-4 cursor-pointer">
                     Forgot Password
                   </span>
-                </div> */}
+                </div>
                 <button
                   type="submit"
                   className=" active:scale-95 duration-200  w-3/4 ml-14 mt-8 bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"

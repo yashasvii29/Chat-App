@@ -35,6 +35,8 @@ ChatApp is a real-time messaging application that allows users to connect, commu
 ## Dependency
 
 * Socket.io
+* Bcrypt
+* JWT(Json web Token)
 * Tailwind CSS
 * Reactjs
 * Vitejs
@@ -91,10 +93,13 @@ Before you begin, ensure you have the following installed:
 - Frontend:
   - HTML,CSS
   - Javascript
+  - React js
   - TailwindCSS: CSS framework
   
 - Backend:
   - MongoDB
+  - Express js
+  - Node js
 
 ### Deployment:
 - Netlify: Frontend deployment
