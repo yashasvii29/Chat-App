@@ -33,7 +33,7 @@ router.post('/register',async (req, res) => {
 router.post('/login',async(req,res)=>{
     try{
         let userFormData = req.body;
-    // console.log(userFormData);
+         console.log(userFormData);
         
             
                 let userDBInfo = await User.findOne({email:userFormData.email});    

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  let [username, setUsername] = useState("");
+  let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
   const navigate = useNavigate("");
@@ -24,14 +24,14 @@ const Login = () => {
       navigate("/chatroom");
     }
     catch (error) {
-      console.error("Error in login user:", error.message);
+      console.log("Error in login user:", error.message);
       navigate("/login");
     }
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(username,password);
-    loginUser({ username, password });
+    console.log(email,password);
+    loginUser({ email, password });
   };
 
   return (
@@ -46,13 +46,13 @@ const Login = () => {
                   <div className=" border-2 border-blue-200 rounded w-70 py-2 px-6 text-gray-700 hover:cursor-pointer">
                     <PersonIcon className="pr-2" />
                     <input
-                      className="appearance-none leading-tight focus:outline-none w-72 h-6 bg-white "
-                      id="username"
-                      name="username"
-                      type="text"
-                      placeholder="Username"
-                      value={username} 
-                      onChange={e => setUsername(e.target.value)}
+                       className="appearance-none leading-tight focus:outline-none w-72 h-6 hover:cursor-pointer  "
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="example@gmail.com"
+                      value={email} 
+                      onChange={e => setEmail(e.target.value)}
                       required
                     ></input>
                   </div>

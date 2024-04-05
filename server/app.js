@@ -24,7 +24,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
     console.log(err)
 })
 
-app.use(cors({origin:['http://localhost:3000']}));
+app.use(cors({origin:['http://localhost:5173']}));
 
 app.use(express.urlencoded({extended:true})); // form data
 app.use(express.json());  // json data

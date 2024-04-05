@@ -10,7 +10,7 @@ import { Link,useNavigate} from "react-router-dom";
 
 const Register = () => {
   
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   let [username,setUsername] = useState("");
   let [password,setPassword] = useState("");
   let [email,setEmail] = useState("");
@@ -20,8 +20,20 @@ const Register = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    console.log({username,password,gender,email,profilePic});
+    registerUser({ username, password, gender, email,profilePic });
+  }
 
-   
+  async function registerUser(data){
+    try{
+      const res =  await axios.post("http://localhost:8080/register", data);
+      console.log(res);
+      navigate("/chatroom");
+    }
+    catch(e){
+      console.log("Error in registration : ",e.message);
+      navigate("/register");
+    }
   }
   return (
     <div>
@@ -30,7 +42,7 @@ const Register = () => {
           <div className="w-5/6 h-5/6 bg-[#edafb8] rounded-2xl flex items-center">  
             <div className="w-2/4 my-16 ml-8 bg-white  rounded-3xl">
               <h1 className="text-center p-2 text-xl font-medium">Register</h1>
-              <form onSubmit={onSubmitHandler} noValidate >
+              <form onSubmit={onSubmitHandler} >
                 <div className="mt-5 flex justify-center items-center ">
                   <div className=" border-2 border-blue-200 rounded w-70 py-2 px-6 text-gray-700 ">
                     <PersonIcon className="pr-2" />
