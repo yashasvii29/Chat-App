@@ -46,8 +46,6 @@ const Chatroom = () => {
 		},
 
 	]
-  
-
 
 	return (
 
