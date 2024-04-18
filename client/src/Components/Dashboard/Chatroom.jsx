@@ -5,11 +5,14 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { FiMail, FiSend } from "react-icons/fi";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
+import Profile from '../Pages/Profile';
+
 
 const Chatroom = () => {
 	const [text,setText]=useState('');
 	const [showEmoji,setEmoji]=useState(false);
-
+	const [openDrawer, setOpenDrawer] = useState(false);
+	
 	const addEmoji=(e)=>{
 		const symemo=e.unified.split("_");
 		const newarr=[];
@@ -18,6 +21,10 @@ const Chatroom = () => {
 		setText(text+emoji);
 	}
 	
+	//profile open functionn
+	const handleDrawer = () => {
+		setOpenDrawer(!openDrawer);
+	  };
 	const contacts=[
 		{
 			name:'Diya',
@@ -53,14 +60,14 @@ const Chatroom = () => {
 		<div className='w-screen flex'>
 			<div className='w-[25%] h-screen bg-[#e0e1dd] overflow-scroll'>
 				<div className='flex items-center my-6 mx-10 py-8 border-b border-gray-400'>
-					<div><img src={Avatar} width={75} height={75} className='border p-[2px] rounded-full border-gray-600 ' /></div>
+					<div><img src={Avatar} width={75} height={75} className='border p-[2px] rounded-full border-gray-600 cursor-pointer ' onClick={() => handleDrawer()} /></div>
 					<div className='ml-8'>
 						<h3 className='text-3xl font-semibold'>Spark Chat</h3>
 						<p className='text-lg font-light'>My Account</p>
 					</div>
 					
 				</div>
-				
+				<Profile open={openDrawer} setOpen={setOpenDrawer}/>
 				
 				{/* showing messages 				 */}
 				<div className='mx-14 mt-10'>
