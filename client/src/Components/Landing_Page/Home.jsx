@@ -1,8 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Header from './Header';
+import Footer from './Footer';
 
 export default function Home() {
     return (
+        <div>
+            <Header/>
         <div className="mx-auto w-full max-w-7xl ">
             <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4  pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
@@ -42,6 +46,9 @@ export default function Home() {
 
             <h1 className="text-center text-white text-2xl sm:text-1xl py-10 font-medium">Welcome to our chatting app, where connecting with loved ones, friends, and colleagues is effortless and enjoyable. With our intuitive interface and robust features, staying in touch has never been easier. Whether you're sharing updates, planning events, or simply catching up, our app provides a seamless experience that keeps conversations flowing. Join our vibrant community today and experience the joy of meaningful connections, anytime, anywhere.</h1>
         </div>
+        <Footer/>
+        </div>
+        
     );
 }
 

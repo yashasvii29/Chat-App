@@ -7,10 +7,10 @@ const generateAuthToken = require('../../jwtTokenGenerator');
 router.post('/register',async (req, res) => {
     try{
         let user = req.body;
-    console.log(user);
-    const Email = await User.findOne({email:user.email});
-    if(Email){
-        res.status(200).json({msg:'email already exist'});
+        console.log(user);
+        const Email = await User.findOne({email:user.email});
+        if(Email){
+           return res.status(200).json({msg:'email already exist'});
     }
     else{
        user.password = await bcrypt.hash(user.password,10); 
@@ -23,11 +23,11 @@ router.post('/register',async (req, res) => {
             profilePic:user.profilePic
         })
         await dbUser.save(); 
-        res.status(200).json({msg:'account has been created'}); 
+       return res.status(200).json({msg:'account has been created'}); 
     }
      }
         catch(e){
-            res.status(400).json({msg:'something went wrong'});
+           return res.status(400).json({msg:'something went wrong'});
         } 
 })
 router.post('/login',async(req,res)=>{
@@ -64,11 +64,11 @@ router.post('/login',async(req,res)=>{
                 return res.status(400).json({msg:'login issue'});
             }
          })
-router.get('/logout',(req,res)=>{
-    ()=>{
-        req.logout();
-    };
-        res.status(200).json({msg:'You have successfully logout'});
-})
+    router.get('/logout',(req,res)=>{
+        ()=>{
+            req.logout();
+        };
+            res.status(200).json({msg:'You have successfully logout'});
+    })
 
 module.exports = router;

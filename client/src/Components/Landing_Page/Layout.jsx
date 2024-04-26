@@ -8,9 +8,9 @@ import Footer from './Footer'
 function Layout() {
   return (
     <div className='bg-purple-200'>
-      <Header/>
+      {/* <Header/> */}
       <Outlet/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }

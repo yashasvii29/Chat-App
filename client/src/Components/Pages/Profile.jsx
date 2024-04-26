@@ -23,24 +23,22 @@ const Profile = ({open,setOpen}) => {
     const handleflag=()=>{
         setflag(true);
     }
-const handlecheck=()=>{
-    setflag(false);
-}
-const handleaboutflag=()=>{
-    setaboutflag(true);
-}
-const handleaboutcheck=()=>{
-setaboutflag(false);
-}
-const handlechange=(e)=>{
-    setusername(e.target.value);
-}
+    const handlecheck=()=>{
+        setflag(false);
+    }
+    const handleaboutflag=()=>{
+        setaboutflag(true);
+    }
+    const handleaboutcheck=()=>{
+    setaboutflag(false);
+    }
+    const handlechange=(e)=>{
+        setusername(e.target.value);
+    }
 
-const handleaboutchange=(e)=>{
-    setabout(e.target.value);
-}
-
-
+    const handleaboutchange=(e)=>{
+        setabout(e.target.value);
+    }
   return (
     
             <Drawer open={open} onClose={handleClose} PaperProps={{sx:drawerstyle}} className='z-[1500]' >
@@ -59,8 +57,6 @@ const handleaboutchange=(e)=>{
                     <Box className='flex justify-center'>
                         <img src={Avatar} alt='dp' className='w-[200px] h-[200px] border-[50%] rounded-full pt-[25px] pl-0 pr-0'></img>
                     </Box>
-                   
-                   
                    
                     <Box className='bg-white pt-[12px]  pr-[30px] pl-[30px] pb-[2px] shadow-2xl mt-8 '>
                     <h3 className='text-xl text-[#d1495b] font-light py-3'>Your Name</h3>
@@ -91,8 +87,6 @@ const handleaboutchange=(e)=>{
                             <BsPencil onClick={handleaboutflag} className='cursor-pointer text-2xl' />
                             </div>
 
-                            
-
                         }
                          {
                             aboutflag && <div className='w-full flex justify-between items-center py-2'>
@@ -102,17 +96,8 @@ const handleaboutchange=(e)=>{
                         }
                     </Box>
 
-
-
-
-
-
                 </Box>
-    </Drawer>
-  
-    
+    </Drawer>  
   )
 }
-
-
 export default Profile

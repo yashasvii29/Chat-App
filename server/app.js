@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const seedDB = require('./seed');
 var cors = require('cors');
+const sockets = require('./sockets/socket');
 // const methodOverride =require('method-override');
 const authRoutes = require('./routes/apis/authRoutes');
 const chatRoutes = require('./routes/apis/chatRoutes');

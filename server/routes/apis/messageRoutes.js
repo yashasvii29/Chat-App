@@ -1,59 +1,56 @@
 const express = require('express');
-const User = require('../../models/User');
-const Message  = require('../../models/Message');
-const Chat = require('../../models/Chat');
-const router = express();
+const router = express.Router();
+const Users = require('../../models/User');
+const Chats = require('../../models/Chat');
+const Messages = require('../../models/Message');
 
-// to get the messages of other person
-router.get('/:id ',async (req, res) => {
-    try{
-        const {otherPersonChatId} = req.params;  // dusre person ki chatid aa jayegi
-        const senderId = req.user._id;
-        const chat = await Chat.findOne({
-            participants:{$all:[senderId,otherPersonChatId]},
-        }).populate("messages"); // not reference but actual message
-
-        if(!chat){
-            return res.status(200).json([]);
+router.post('/message', async (req, res) => {
+    try {
+        const { chatId, senderId, message, receiverId = '' } = req.body;
+        if (!senderId || !message) return res.status(400).send('Please fill all required fields')
+        if (chatId === 'new' && receiverId) {
+            const newChat = new Chats({ members: [senderId, receiverId] });
+            await newChat.save();
+            const newMessage = new Messages({ chatId: newChat._id, senderId, message });
+            await newMessage.save();
+            return res.status(200).send('Message sent successfully');
+        } else if (!chatId && !receiverId) {
+            return res.status(400).send('Please fill all required fields')
         }
-        const messages = chat.messages;
-        res.status(200).json(messages);
-     }
-        catch(e){
-            console.log("error in getting messages",e.message);
-            res.status(400).json({msg:'something went wrong'});
-        } 
-})
-// to send message to someone
-router.post('send/:id', async (req,res)=>{
-    try{
-        const {message}= req.body;
-        const {receiverId} = req.params;
-        const senderId = req.user._id;
-        let chat = await Chat.findOne({
-            participants:{$all : [senderId,receiverId]},
-        });
-        if(!chat){
-            chat = await  Chat.create({
-                participants:[senderId,receiverId],
-            });
-        }
-        const newMsg = new Message({senderId,receiverId});
-        await chat.save();
-        await newMsg.save();
-
-        const receiverSocketId = getReceiverSocketId(receiverId);
-
-        if(receiverSocketId){
-            io.to(receiverSocketId).emit("newMessage",newMsg);
-        }
-
-        res.status(200).json(newMsg);
-    }
-    catch(e){
-        console.log("Error in sending message",e.message);
-        res.status(400).json({msg:'something went wrong'});
+        const newMessage = new Messages({ chatId, senderId, message });
+        await newMessage.save();
+        res.status(200).send('Message sent successfully');
+    } catch (error) {
+        console.log(error, 'Error')
     }
 })
 
-module.exports=router;
+app.get('/message/:chatId', async (req, res) => {
+    try {
+        const checkMessages = async (chatId) => {
+            console.log(chatId, 'chatId')
+            const messages = await Messages.find({ chatId });
+            const messageUserData = Promise.all(messages.map(async (message) => {
+                const user = await Users.findById(message.senderId);
+                return { user: { id: user._id, email: user.email, username: user.username }, message: message.message }
+            }));
+            res.status(200).json(await messageUserData);
+        }
+        const chatId = req.params.chatId;
+        if (chatId === 'new') {
+            const checkChat = await Chats.find({ members: { $all: [req.query.senderId, req.query.receiverId] } });
+            if (checkChat.length > 0) {
+                checkMessages(checkChat[0]._id);
+            } else {
+                return res.status(200).json([])
+            }
+        } else {
+            checkMessages(chatId);
+        }
+    } catch (error) {
+        console.log('Error', error)
+    }
+})
+
+
+module.exports = router;
