@@ -73,14 +73,8 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="ml-16 flex ">
-                  <input
-                    className="mr-2 leading-tight cursor-pointer"
-                    type="checkbox"
-                  ></input>
-                  <span className="text-sm">Remember Password</span>
-                  <span className="ml-20 mr-8 text-blue-600 underline underline-offset-4 cursor-pointer">
-                    Forgot Password
-                  </span>
+              
+                  
                 </div>
                 <button
                   type="submit"
