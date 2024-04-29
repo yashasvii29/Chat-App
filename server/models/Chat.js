@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({
-		participants : [
-			{
-				required:true
-			}
-		],
+		participants :{
+			type:Array
+		}
 		
 	} , {timestamps : true });
 
