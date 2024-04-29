@@ -25,7 +25,7 @@ router.post('/message', async (req, res) => {
     }
 })
 
-app.get('/message/:chatId', async (req, res) => {
+router.get('/message/:chatId', async (req, res) => {
     try {
         const checkMessages = async (chatId) => {
             console.log(chatId, 'chatId')

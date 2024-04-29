@@ -30,6 +30,7 @@ router.post('/register',async (req, res) => {
            return res.status(400).json({msg:'something went wrong'});
         } 
 })
+
 router.post('/login',async(req,res)=>{
     try{
         let userFormData = req.body;

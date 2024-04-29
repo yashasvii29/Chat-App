@@ -14,7 +14,7 @@ router.post('/chat', async (req, res) => {
   }
 })
 
-app.get('/chat/:userId', async (req, res) => {
+router.get('/chat/:userId', async (req, res) => {
   try {
       const userId = req.params.userId;
       const chat = await chat.find({ members: { $in: [userId] } });
