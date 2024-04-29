@@ -8,6 +8,8 @@ import Picker from '@emoji-mart/react'
 import Profile from '../Pages/Profile';
 import io from 'socket.io-client';
 import axios from 'axios';
+import Header2 from '../Landing_Page/Header2';
+import logo from '../../../src/assets/live-chat.png';
 
 
 const Chatroom = () => {
@@ -54,7 +56,7 @@ const Chatroom = () => {
 	// 		img:Avatar
 	// 	},
 
-	// ]
+	//  ]
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem('user:detail')))
 	const [conversations, setConversations] = useState([])
 	const [messages, setMessages] = useState({})
@@ -146,10 +148,11 @@ const Chatroom = () => {
 	}
 
 	return (
+		<>
+		<Header2 />
 
-		// left side content with dummy data profile part
-		<div className='w-screen flex'>
-			<div className='w-[25%] h-screen bg-[#cab1bd] overflow-scroll'>
+		<div className='w-full flex'>
+			<div className='w-[25%] h-screen bg-[#cab1bd] '>
 				<div className='flex items-center my-6 mx-10 py-8 border-b border-gray-400'>
 					<div><img src={Avatar} width={75} height={75} className='border p-[2px] rounded-full border-gray-600 cursor-pointer ' onClick={() => handleDrawer()} /></div>
 					<div className='ml-8'>
@@ -249,10 +252,13 @@ const Chatroom = () => {
 			</div>
 
 			{/* right side content ke liye */}
-			{/* <div className='w-[25%] h-screen bg-light px-8 py-16 overflow-scroll'>
-				
-			</div> */}
+			<div className='w-[25%] h-screen bg-light px-8 py-16 overflow-auto'>
+			 	<div className="flex justify-center items-center h-screen">
+				    <img src={logo} alt="Logo"/>
+    			</div>
+			</div>
 		</div>
+		</>
 	)
 }
 

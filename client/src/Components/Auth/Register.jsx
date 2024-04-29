@@ -123,7 +123,6 @@ const Register = () => {
                   </div>
                 </div>
                 <div>
-                <button type="submit" className="mt-1 ml-16 bg-gray-200 px-1 py-1 rounded">Upload</button>
                 </div>
                   
                 
