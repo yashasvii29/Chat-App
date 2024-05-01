@@ -3,7 +3,58 @@ const app = express();
 const mongoose = require('mongoose');
 const seedDB = require('./seed');
 var cors = require('cors');
-const sockets = require('./sockets/socket');
+const Users = require('./models/User');
+const http = require('http');
+const { Server } = require("socket.io");
+const setUpSocket = require('./sockets/socket')
+// const server = http.createServer(app);
+// const io = socketio(server);  
+
+// const users = [];
+
+// // app.use('/', express.static(path.join(__dirname,'public')));
+// io.on('connection', socket => {
+//     console.log('User connected', socket.id);
+//     socket.on('addUser', userId => {
+//         const isUserExist = users.find(user => user.userId === userId);
+//         if (!isUserExist) {
+//             const user = { userId, socketId: socket.id };
+//             users.push(user);
+//             io.emit('getUsers', users);
+//         }
+//     });
+
+//     socket.on('sendMessage', async ({ senderId, receiverId, message, chatId }) => {
+//         const receiver = users.find(user => user.userId === receiverId);
+//         const sender = users.find(user => user.userId === senderId);
+//         const user = await Users.findById(senderId);
+//         console.log('sender :>> ', sender, receiver);
+//         if (receiver) {
+//             io.to(receiver.socketId).to(sender.socketId).emit('getMessage', {
+//                 senderId,
+//                 message,
+//                 chatId,
+//                 receiverId,
+//                 user: { id: user._id, username: user.username, email: user.email }
+//             });
+//             }else {
+//                 io.to(sender.socketId).emit('getMessage', {
+//                     senderId,
+//                     message,
+//                     chatId,
+//                     receiverId,
+//                     user: { id: user._id, username: user.username, email: user.email }
+//                 });
+//             }
+//         });
+
+//     socket.on('disconnect', () => {
+//         users = users.filter(user => user.socketId !== socket.id);
+//         io.emit('getUsers', users);
+//     });
+
+// });
+// const sockets = require('./sockets/socket');
 // const methodOverride =require('method-override');
 const authRoutes = require('./routes/apis/authRoutes');
 const chatRoutes = require('./routes/apis/chatRoutes');
@@ -39,6 +90,7 @@ app.get('/' , (req,res)=>{
     res.send('Welcome to chat-app');
 })
 // seedDB();
-app.listen(8080 , (req,res)=>{
+const server = app.listen(8080 , (req,res)=>{
     console.log("Server connected at port 8080");
 })
+setUpSocket(server)

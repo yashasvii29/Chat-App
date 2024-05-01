@@ -20,7 +20,10 @@ const Login = () => {
   async function loginUser(data) {
     try {
       const res = await axios.post("http://localhost:8080/login", data);
-      console.log(res);
+      console.log(res.data.data.userDBInfo);
+      localStorage.setItem('username',res.data.data.userDBInfo.username)
+      localStorage.setItem('email',res.data.data.userDBInfo.email)
+      localStorage.setItem('user',JSON.stringify(res.data.data.userDBInfo))
       navigate("/chatroom");
     }
     catch (error) {

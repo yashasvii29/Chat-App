@@ -5,6 +5,8 @@ import Avatar from '../../../src/assets/avatar.svg';
 import { BsCheck2, BsPencil } from 'react-icons/bs';
 
 const Profile = ({open,setOpen}) => {
+    const initialData = JSON.parse(localStorage.getItem('user'))
+    const [userData, setUserData] = useState(initialData)
     const drawerstyle={
         left:20,
         top:17,
@@ -63,7 +65,7 @@ const Profile = ({open,setOpen}) => {
                     {
                         !flag && <div className='flex justify-between items-center'>
                         
-                        <h2 className='mt-[14px] mb-[14px] text-[#4A4A4A]'>{username || "Your name"}</h2>
+                        <h2 className='mt-[14px] mb-[14px] text-[#4A4A4A]'>{userData.username || "Your name"}</h2>
                         <BsPencil onClick={handleflag} className='cursor-pointer text-2xl' />
                         </div>
                     }

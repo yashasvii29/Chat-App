@@ -52,6 +52,7 @@ router.post('/login',async(req,res)=>{
                 console.log(validatePassword);
                 const token = generateAuthToken(userDBInfo); 
                 console.log(token);
+                console.log(userDBInfo);
                 res.status(200).json({data:{
                     token:token,
                     userDBInfo:userDBInfo

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({
-		participants : 
+		members : 
 			{
 				type: Array,
             	required: true
