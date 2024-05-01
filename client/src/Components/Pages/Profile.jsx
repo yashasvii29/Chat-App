@@ -6,6 +6,7 @@ import { BsCheck2, BsPencil } from 'react-icons/bs';
 
 const Profile = ({open,setOpen}) => {
     const initialData = JSON.parse(localStorage.getItem('user'))
+    
     const [userData, setUserData] = useState(initialData)
     const drawerstyle={
         left:20,
@@ -23,10 +24,16 @@ const Profile = ({open,setOpen}) => {
     const[about,setabout]=useState(null);
 
     const handleflag=()=>{
+        setusername(userData.username);
         setflag(true);
     }
-    const handlecheck=()=>{
+    const handlecheck=(e)=>{
         setflag(false);
+        setUserData(prevState => ({
+            ...prevState,
+            username: username
+        }))
+        
     }
     const handleaboutflag=()=>{
         setaboutflag(true);
@@ -35,6 +42,7 @@ const Profile = ({open,setOpen}) => {
     setaboutflag(false);
     }
     const handlechange=(e)=>{
+        
         setusername(e.target.value);
     }
 
@@ -71,8 +79,8 @@ const Profile = ({open,setOpen}) => {
                     }
                         {
                             flag && <div className='w-full flex justify-between items-center py-2'>
-                                <input onChange={handlechange} className='w-[80%] outline-none border-b-2 border-blue-700 p-2' type='text' placeholder='Enter your name'/>
-                                <BsCheck2 className='cursor-pointer text-2xl' onClick={handlecheck}/>
+                                <input value={username} onChange={handlechange} className='w-[80%] outline-none border-b-2 border-blue-700 p-2' type='text' placeholder='Enter your name'/>
+                                <BsCheck2 className='cursor-pointer text-2xl' onClick={handlecheck} />
                             </div>
                         }
                         
