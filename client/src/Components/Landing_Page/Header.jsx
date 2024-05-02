@@ -14,7 +14,7 @@ export default function Header() {
                             alt="Logo"
                         />
                         
-                        <h1 className=' pl-4 text-4xl font-bold'>Chatting App</h1>
+                        <h1 className=' pl-4 text-4xl font-bold'>Chatwave</h1>
                         
                     </Link>
                     <div className="flex items-center lg:order-2">

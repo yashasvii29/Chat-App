@@ -26,32 +26,7 @@ router.post('/message', async (req, res) => {
     }
 })
 
-// router.get('/message/:chatId', async (req, res) => {
-//     try {
-//         const checkMessages = async (chatId) => {
-//             console.log(chatId, 'chatId')
-//             const messages = await Messages.find({ chatId });
-//             const messageUserData = Promise.all(messages.map(async (message) => {
-//                 const user = await Users.findById(message.senderId);
-//                 return { user: { id: user._id, email: user.email, username: user.username }, message: message.message }
-//             }));
-//             res.status(200).json(await messageUserData);
-//         }
-//         const chatId = req.params.chatId;
-//         if (chatId === 'new') {
-//             const checkChat = await Chats.find({ members: { $all: [req.query.senderId, req.query.receiverId] } });
-//             if (checkChat.length > 0) {
-//                 checkMessages(checkChat[0]._id);
-//             } else {
-//                 return res.status(200).json([])
-//             }
-//         } else {
-//             checkMessages(chatId);
-//         }
-//     } catch (error) {
-//         console.log('Error', error)
-//     }
-// })
+
 
 router.get('/message/:chatId', async (req, res) => {
     try {
