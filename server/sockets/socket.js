@@ -68,6 +68,17 @@ socket.on('typing', ({ receiverId }) => {
     console.log("stop typing");
     socket.broadcast.to(receiverId).emit('stopTyping', { senderId: socket.id });
   });
+
+
+
+// // Listen for typing event
+// socket.on('typing', ({ receiverId, senderId }) => {
+//     io.to(receiverId).emit('typing', { senderId });
+//   });
+
+//   socket.on('stopTyping', ({ receiverId, senderId }) => {
+//     io.to(receiverId).emit('stopTyping', { senderId });
+//   });
   
 
         // send and get message

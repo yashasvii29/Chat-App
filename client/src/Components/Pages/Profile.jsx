@@ -45,7 +45,7 @@ const Profile = ({open,setOpen}) => {
         
         setusername(e.target.value);
     }
-
+6
     const handleaboutchange=(e)=>{
         setabout(e.target.value);
     }
