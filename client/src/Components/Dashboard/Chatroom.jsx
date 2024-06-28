@@ -73,6 +73,7 @@ const Chatroom = () => {
   // Add state variables for typing status and sender's ID
 const [typing, setTyping] = useState(false);
 const [typingSenderId, setTypingSenderId] = useState(null);
+// const [senderName,setSendername] = useState("");
 
   useEffect(() => {
     socket.current = io('ws://localhost:8080'); // for connection purpose 
@@ -316,7 +317,7 @@ console.log(messages);
                         } `}
                       >
                         {data.message}
-                        {typing && typingSenderId === receiverData?.id && (
+                        {(typing && typingSenderId === receiverData?.id) && (
                       <div className="text-gray-600 text-sm">Typing...</div>
           )}
                       </div>
@@ -381,5 +382,3 @@ console.log(messages);
 };
 
 export default Chatroom;
-
-
