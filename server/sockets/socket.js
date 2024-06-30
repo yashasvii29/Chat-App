@@ -58,17 +58,37 @@ function setupSocket(server) {
             io.emit("getUsers", users);
         });
         // Listen for typing event
-socket.on('typing', ({ receiverId }) => {
-    console.log("typing");
-    socket.broadcast.to(receiverId).emit('typing', { senderId: socket.id });
-  });
+// socket.on('typing', ({ receiverId }) => {
+//     console.log("typing");
+//     socket.broadcast.to(receiverId).emit('typing', { senderId: socket.id });
+//   });
   
-  // Listen for stop typing event
-  socket.on('stopTyping', ({ receiverId }) => {
-    console.log("stop typing");
-    socket.broadcast.to(receiverId).emit('stopTyping', { senderId: socket.id });
-  });
+//   // Listen for stop typing event
+//   socket.on('stopTyping', ({ receiverId }) => {
+//     console.log("stop typing");
+//     socket.broadcast.to(receiverId).emit('stopTyping', { senderId: socket.id });
+//   });
 
+// socket.io('typing1',(msg)=>{
+//     io.emit('typing',msg);
+// })
+
+// socket.on('sendTyping',(data)=>{
+//     console.log(data.name+' is typing in '+data.)
+// })
+// socket.on("typing", ({ receiverId }) => {
+//     const receiverSocketId = getUser(receiverId)?.socketId;
+//     if (receiverSocketId) {
+//       io.to(receiverSocketId).emit("typing", { senderId: socket.id });
+//     }
+//   });
+
+  socket.on("stopTyping", ({ receiverId }) => {
+    const receiverSocketId = getUser(receiverId)?.socketId;
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("stopTyping", { senderId: socket.id });
+    }
+  });
 
 
 // // Listen for typing event
