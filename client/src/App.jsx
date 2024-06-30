@@ -6,6 +6,7 @@ import Home from './Components/Landing_Page/Home'
 import Layout from './Components/Landing_Page/Layout'
 import About from './Components/Landing_Page/About'
 import Chatroom from './Components/Dashboard/Chatroom'
+// import Practice from './Components/Practice'
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/chatroom' element={<Chatroom/>} />
-          </Route>
+            </Route>
+         
         </Routes>
       </BrowserRouter>
     </div>
