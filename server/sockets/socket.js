@@ -1,5 +1,4 @@
 const { Server } = require("socket.io");
-
 let io;
 const users = [];
 
@@ -57,28 +56,28 @@ function setupSocket(server) {
             console.log(users);
             io.emit("getUsers", users);
         });
-        // Listen for typing event
-socket.on('typing', ({ receiverId }) => {
-    console.log("typing");
-    socket.broadcast.to(receiverId).emit('typing', { senderId: socket.id });
-  });
-  
-  // Listen for stop typing event
-  socket.on('stopTyping', ({ receiverId }) => {
-    console.log("stop typing");
-    socket.broadcast.to(receiverId).emit('stopTyping', { senderId: socket.id });
-  });
+        
+    // Listen for typing event
+    socket.on('typing', ({ receiverId }) => {
+        console.log("Received typing event from client", receiverId);
+        const receiverSocketId = getUser(receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit('typing', { senderId: socket.id });
+        }
+    });
 
 
+    
+    
+    socket.on('stopTyping', ({ receiverId }) => {
+        console.log("Received stop typing event from client", receiverId);
+        const receiverSocketId = getUser(receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit('stopTyping', { senderId: socket.id });
+        }
+    });
+    
 
-// // Listen for typing event
-// socket.on('typing', ({ receiverId, senderId }) => {
-//     io.to(receiverId).emit('typing', { senderId });
-//   });
-
-//   socket.on('stopTyping', ({ receiverId, senderId }) => {
-//     io.to(receiverId).emit('stopTyping', { senderId });
-//   });
   
 
         // send and get message
