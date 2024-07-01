@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useRef } from "react";
 import Avatar from "../../../src/assets/avatar.svg";
 import { SlCallOut } from "react-icons/sl";
@@ -244,10 +242,10 @@ const Chatroom = () => {
              {console.log('Before typing indicator rendering')}
              {console.log('Typing:', typing)}
               {console.log('Sender ID:', typingSenderId)}
-              {console.log('Receiver Data ID:', receiverData?.id)}
+              {console.log('Receiver Data ID:', receiverData)}
               {console.log('Is typing sender ID equal to receiver ID:', typingSenderId === receiverData?.id)}
-             {typing && typingSenderId === receiverData?.id && (
-            <div className="text-gray-600 text-sm h-6 w-auto mt-1 ml-2 p-1 bg-gray-200 rounded">
+             {typing && (
+            <div className="text-gray-600 text-sm h-6 w-4 mt-1 ml-2 p-1 rounded">
               Typing...
             </div>
             )}
