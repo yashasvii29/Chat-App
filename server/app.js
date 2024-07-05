@@ -14,7 +14,7 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 const userRoutes = require('./routes/apis/userRoutes');
 
-mongoose.connect('mongodb+srv://yashasviagrawal29:yashii@cluster0.bhdsmxc.mongodb.net/Chatting-App')
+mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
 .then(()=>{
     console.log("DB connected successfully")
 })
