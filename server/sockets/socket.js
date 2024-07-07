@@ -60,10 +60,6 @@ function setupSocket(server) {
             io.to(receiverSocketId).emit('typing', { senderId: socket.id });
         }
     });
-
-
-    
-    
     socket.on('stopTyping', ({ receiverId }) => {
         console.log("Received stop typing event from client", receiverId);
         const receiverSocketId = getUser(receiverId);
@@ -71,14 +67,13 @@ function setupSocket(server) {
             io.to(receiverSocketId).emit('stopTyping', { senderId: socket.id });
         }
     });
-<<<<<<< HEAD
-=======
+
 
 
 
   
 
->>>>>>> 3b326e88c34a474f5bfb8efe47a591a50fd1d175
+
         // send and get message
         socket.on("sendMessage", ({ senderId, receiverId, text }) => {
             sendMessageToUser({ senderId, receiverId, text });
