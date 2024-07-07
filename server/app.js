@@ -18,12 +18,16 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 const userRoutes = require('./routes/apis/userRoutes');
 
+
 // mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
 // after adding the string from mongodb atlas in vscode go to your cluster then navigate to netwrok access and add current ip address to connect mongodb atlas with database(mongodb compass) copy paste this string to connect with mongodb compass
 const dbURL = process.env.dbURL;
 
 mongoose.set('strictQuery',true);
 mongoose.connect(dbURL)
+
+mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
+
 .then(()=>{
     // console.log(`DB connected successfully ${mongoose.connection.host}`);
     console.log("db connected successfully");
