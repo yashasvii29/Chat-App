@@ -293,23 +293,6 @@ export default Chatroom;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React, { useState, useEffect, useRef } from "react";
 // import Avatar from "../../../src/assets/avatar.svg";
 // import { SlCallOut } from "react-icons/sl";
@@ -324,7 +307,7 @@ export default Chatroom;
 // const Chatroom = () => {
 //   const [showEmoji, setEmoji] = useState(false);
 //   const [openDrawer, setOpenDrawer] = useState(false);
-//   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user:detail")));
+//   const [user, setUser] = useState(null);
 //   const [conversations, setConversations] = useState([]);
 //   const [messages, setMessages] = useState([]);
 //   const [message, setMessage] = useState("");
@@ -333,11 +316,19 @@ export default Chatroom;
 //   const [receiverData, setRecieverData] = useState(null);
 //   const messageRef = useRef(null);
 //   const socket = useRef(null);
-//   const userDetails = JSON.parse(localStorage.getItem('user'));
-//   const [userData, setUserData] = useState(userDetails);
+//   const [userData, setUserData] = useState(null);
 //   const [singleSocketMessage, setSocketMessage] = useState('');
 //   const [typing, setTyping] = useState(false);
 //   const [typingSenderId, setTypingSenderId] = useState(null);
+
+//   useEffect(() => {
+//     const storedUser = JSON.parse(localStorage.getItem("user"));
+//     if (storedUser) {
+//       setUser(storedUser);
+//       setUserData(storedUser);
+//       console.log("User data retrieved from localStorage:", storedUser);
+//     }
+//   }, []);
 
 //   useEffect(() => {
 //     socket.current = io('ws://localhost:8080'); // for connection purpose
@@ -357,39 +348,40 @@ export default Chatroom;
 //   }, [messages]);
 
 //   useEffect(() => {
-//     const loggedInUser = JSON.parse(localStorage.getItem("user"));
-//     console.log(loggedInUser)
-//     const fetchConversations = async () => {
-//       const res = await axios(`http://localhost:8080/chats/${loggedInUser?._id}`, {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-//       setConversations(res.data);
-//     };
-//     fetchConversations(userData);
-//   }, []);
+//     if (user) {
+//       const fetchConversations = async () => {
+//         const res = await axios(`http://localhost:8080/chats/${user._id}`, {
+//           method: "GET",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//         });
+//         setConversations(res.data);
+//       };
+//       fetchConversations();
+//     }
+//   }, [user]);
 
 //   useEffect(() => {
-//     const axiosUsers = async () => {
-//       const res = await axios(`http://localhost:8080/users/${user?.id}`, {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-//       const resData = await res.json();
-//       setUsers(resData);
-//     };
-//     axiosUsers();
-//   }, []);
+//     if (user) {
+//       const axiosUsers = async () => {
+//         const res = await axios(`http://localhost:8080/users/${user.id}`, {
+//           method: "GET",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//         });
+//         const resData = await res.json();
+//         setUsers(resData);
+//       };
+//       axiosUsers();
+//     }
+//   }, [user]);
 
 //   const axiosMessages = async (e, chatId, receiver) => {
 //     e.preventDefault();
-//     console.log(user.id+" "+receiver.receiverId)
 //     const res = await axios(
-//       `http://localhost:8080/message/${chatId}?senderId=${user?.id}&&receiverId=${receiver?.receiverId}`,
+//       `http://localhost:8080/message/${chatId}?senderId=${user.id}&&receiverId=${receiver.receiverId}`,
 //       {
 //         method: "GET",
 //         headers: {
@@ -412,7 +404,7 @@ export default Chatroom;
 //         console.log('Emitting typing event');
 //         socket.current.emit('typing', { receiverId: receiverData?.id });
 //     }
-// };
+//   };
 
 //   const sendMessage = async (e) => {
 //     e.preventDefault();
@@ -427,7 +419,6 @@ export default Chatroom;
 //     setMessage("");
 //   };
 
-  
 //   useEffect(() => {
 //     socket.current.on('getMessage', data => {
 //       setSocketMessage({
@@ -454,7 +445,7 @@ export default Chatroom;
 //         setTyping(false);
 //         setTypingSenderId(senderId);
 //     });
-// }, []);
+//   }, []);
 
 //   return (
 //     <>
@@ -468,11 +459,11 @@ export default Chatroom;
 //                 width={75}
 //                 height={75}
 //                 className="border p-[2px] rounded-full border-gray-600 cursor-pointer"
-//                 onClick={<Profile/>}
+//                 onClick={() => setOpenDrawer(!openDrawer)}
 //               />
 //             </div>
 //             <div className="ml-8">
-//               <h3 className="text-3xl font-semibold">{user?.username}</h3>
+//               <h3 className="text-3xl font-semibold">{user?.username || "My Account"}</h3>
 //               <p className="text-lg font-light">My Account</p>
 //             </div>
 //           </div>
@@ -538,50 +529,47 @@ export default Chatroom;
 //                       className={`max-w-[40%] rounded-b-xl p-4 mb-6 ${
 //                         receiverData?.id === data?.senderId
 //                           ? "bg-[#e5e5e5] rounded-tr-xl"
-//                           : "bg-[#fbb1bd] text-black rounded-tl-xl ml-auto"
+//                           : "bg-[#7b5157] rounded-tl-xl text-white ml-auto"
 //                       }`}
+//                       ref={messageRef}
 //                     >
 //                       {data.message}
 //                     </div>
-//                     <div ref={messageRef}></div>
 //                   </div>
 //                 ))
 //               ) : (
-//                 <div className="text-center text-lg font-semibold mt-24">
-//                   No Messages or No Conversation Selected
+//                 <div className="flex items-center justify-center h-full">
+//                   <h3 className="text-gray-500 text-lg">No messages yet.</h3>
 //                 </div>
 //               )}
-
-
-//              {console.log('Before typing indicator rendering')}
-//              {console.log('Typing:', typing)}
-//               {console.log('Sender ID:', typingSenderId)}
-//               {console.log('Receiver Data ID:', receiverData)}
-//               {console.log('Is typing sender ID equal to receiver ID:', typingSenderId === receiverData?.id)}
-//              {typing && (
-//             <div className="text-gray-600 text-sm h-6 w-4 mt-1 ml-2 p-1 rounded">
-//               Typing...
-//             </div>
-//             )}
-//            { console.log('After typing indicator rendering')}
+//               {typing && receiverData?.id === typingSenderId && (
+//                 <div className="ml-2">
+//                   <p className="text-gray-500 text-lg">Typing...</p>
+//                 </div>
+//               )}
 //             </div>
 //           </div>
-//           {converstation && (
-//             <div className="p-14 w-full flex items-center">
-//               <input
-//                 type="text"
-//                 value={message}
-//                 onKeyDown={sendMessageHandler}
-//                 onChange={(e) => {
-//                   setMessage(e.target.value);
-//                   socket.current.emit('typing', { receiverId: receiverData.id });
-//                 }}
-//                 onBlur={() => socket.current.emit('stopTyping', { receiverId: receiverData.id })}
-//                 className="border w-full"
+//           <div className="flex items-center w-full relative h-[10%] px-10 mt-auto">
+//             <div className="absolute right-[85px] text-primary">
+//               <BsEmojiSmile
+//                 className="h-[30px] w-[30px]"
+//                 onClick={() => setEmoji(!showEmoji)}
 //               />
-//               <FiSend onClick={sendMessage} className="ml-4 cursor-pointer" size={25} />
 //             </div>
-//           )}
+//             <div className="w-full h-[70px] flex items-center shadow-md px-8 rounded-3xl ml-3">
+//               <input
+//                 className="w-full outline-none"
+//                 type="text"
+//                 placeholder="Type your message here..."
+//                 value={message}
+//                 onChange={(e) => setMessage(e.target.value)}
+//                 onKeyPress={sendMessageHandler}
+//               />
+//               <div className="cursor-pointer" onClick={sendMessage}>
+//                 <FiSend className="h-[30px] w-[30px]" />
+//               </div>
+//             </div>
+//           </div>
 //         </div>
 //       </div>
 //     </>
