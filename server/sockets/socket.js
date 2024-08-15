@@ -1,12 +1,10 @@
 const { Server } = require("socket.io");
 let io;
 const users = [];
-
 const addUser = (userId, socketId) => {
     !users.some((user) => user.userId === userId) &&
         users.push({ userId, socketId });
 };
-
 const removeUser = (socketId) => {
     console.log(users);
     console.log(socketId);
@@ -16,12 +14,10 @@ const removeUser = (socketId) => {
         users.splice(index, 1);
     }
 };
-
 const getUser = (userId) => {
     const matchingUsers = users.filter(user => user.userId === userId);
     return matchingUsers.length > 0 ? matchingUsers[0].socketId : null;
 };
-
 const sendMessageToUser = async ({ senderId, receiverId, text }) => {
     const SocketIdUser = getUser(receiverId);
     console.log("User - " + SocketIdUser, senderId, receiverId, text);
@@ -64,10 +60,6 @@ function setupSocket(server) {
             io.to(receiverSocketId).emit('typing', { senderId: socket.id });
         }
     });
-
-
-    
-    
     socket.on('stopTyping', ({ receiverId }) => {
         console.log("Received stop typing event from client", receiverId);
         const receiverSocketId = getUser(receiverId);
@@ -78,7 +70,9 @@ function setupSocket(server) {
 
 
 
+
   
+
 
         // send and get message
         socket.on("sendMessage", ({ senderId, receiverId, text }) => {

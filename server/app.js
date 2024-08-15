@@ -22,7 +22,8 @@ const dbURL=process.env.dbURL;
 mongoose.set('strictQuery',true);
 mongoose.connect(dbURL)
 .then(()=>{
-    console.log("DB connected successfully")
+    // console.log(`DB connected successfully ${mongoose.connection.host}`);
+    console.log("db connected successfully");
 })
 .catch((err)=>{
     console.log("DB error"); 
@@ -32,6 +33,7 @@ mongoose.connect(dbURL)
 app.use(cors({origin:['http://localhost:5173']}));
 
 app.use(express.urlencoded({extended:true})); // form data
+
 app.use(express.json());  // json data
 
 app.use(authRoutes);
