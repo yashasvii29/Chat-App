@@ -6,7 +6,11 @@ const Chats = require("../../models/Chat");
 router.post("/chat", async (req, res) => {
   try {
     const { senderId, receiverId } = req.body;
+    if(!senderId || !receiverId){
+      return res.status(400).json({ message: "Sender and receiver id are required" });
+    }
     const newChat = new Chats({ members: [senderId, receiverId] });
+
     await newChat.save();
     res.status(200).send("chat created successfully");
   } catch (error) {
@@ -44,3 +48,4 @@ router.get("/chats/:userId", async (req, res) => {
 });
 
 module.exports = router;
+
