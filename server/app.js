@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config({path:__dirname+"/.env"});
+}
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -14,14 +18,16 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 const userRoutes = require('./routes/apis/userRoutes');
 
-mongoose.connect('mongodb://127.0.0.1:27017/Chatting-App')
+const dbURL=process.env.dbURL;
+mongoose.set('strictQuery',true);
+mongoose.connect(dbURL)
 .then(()=>{
     console.log("DB connected successfully")
 })
 .catch((err)=>{
     console.log("DB error"); 
     console.log(err)
-})
+})  
 
 app.use(cors({origin:['http://localhost:5173']}));
 

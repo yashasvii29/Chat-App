@@ -32,6 +32,7 @@ router.get('/message/:chatId', async (req, res) => {
     try {
         console.log(req.params);
         const messages = await Messages.find({ chatId: req.params.chatId })
+        console.log(messages)
         res.status(200).json(messages);
     } catch (error) {
         console.log('Error:', error);
