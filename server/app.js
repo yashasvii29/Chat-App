@@ -36,6 +36,8 @@ app.use(express.urlencoded({extended:true})); // form data
 
 app.use(express.json());  // json data
 
+app.use(express.static('dist'))
+
 app.use(authRoutes);
 app.use(chatRoutes);
 app.use(messageRoutes);
