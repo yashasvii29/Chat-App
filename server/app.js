@@ -18,10 +18,7 @@ const chatRoutes = require('./routes/apis/chatRoutes');
 const messageRoutes = require('./routes/apis/messageRoutes');
 const userRoutes = require('./routes/apis/userRoutes');
 
-
-
-const dbURL = process.env.dbURL;
-
+const dbURL=process.env.dbURL;
 mongoose.set('strictQuery',true);
 mongoose.connect(dbURL)
 .then(()=>{
@@ -31,13 +28,15 @@ mongoose.connect(dbURL)
 .catch((err)=>{
     console.log("DB error"); 
     console.log(err)
-})
+})  
 
 app.use(cors({origin:['http://localhost:5173']}));
 
 app.use(express.urlencoded({extended:true})); // form data
 
 app.use(express.json());  // json data
+
+app.use(express.static('dist'))
 
 app.use(authRoutes);
 app.use(chatRoutes);

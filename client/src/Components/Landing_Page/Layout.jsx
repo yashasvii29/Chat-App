@@ -7,7 +7,7 @@ import Footer from './Footer'
 
 function Layout() {
   return (
-    <div className='bg-purple-200'>
+    <div className='bg-purple-200 '>
       {/* <Header/> */}
       <Outlet/>
       {/* <Footer/> */}
