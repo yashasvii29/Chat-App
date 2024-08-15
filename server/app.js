@@ -30,7 +30,15 @@ mongoose.connect(dbURL)
     console.log(err)
 })  
 
-app.use(cors({origin:['http://localhost:5173']}));
+// app.use(cors({origin:['http://localhost:5173']}));
+
+app.use(cors({
+    origin: [
+      'http://localhost:5173', // Local development
+      'https://chat-app-nine-rho-77.vercel.app/' // Deployed frontend
+    ]
+  }));
+  
 
 app.use(express.urlencoded({extended:true})); // form data
 
