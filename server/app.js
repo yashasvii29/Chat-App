@@ -36,13 +36,19 @@ app.use(cors({
     origin: [
     //   'http://localhost:5173', // Local development
       'https://chat-app-nine-rho-77.vercel.app/' // Deployed frontend
-    ]
+    ],
+    methods: ["GET", "POST"],
+    credentials:true
   }));
   
 
 app.use(express.urlencoded({extended:true})); // form data
 
 app.use(express.json());  // json data
+
+app.get('/' , (req,res)=>{
+    res.json('Welcome to chat-app');
+})
 
 app.use(express.static('dist'))
 
@@ -51,9 +57,7 @@ app.use(chatRoutes);
 app.use(messageRoutes);
 app.use(userRoutes);
 
-app.get('/' , (req,res)=>{
-    res.send('Welcome to chat-app');
-})
+
 // seedDB();
 const server = app.listen(8080 , (req,res)=>{
     console.log("Server connected at port 8080");
