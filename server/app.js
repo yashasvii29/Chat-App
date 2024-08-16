@@ -34,7 +34,7 @@ mongoose.connect(dbURL)
 
 app.use(cors({
     origin: [
-      'http://localhost:5173', // Local development
+    //   'http://localhost:5173', // Local development
       'https://chat-app-nine-rho-77.vercel.app/' // Deployed frontend
     ]
   }));
