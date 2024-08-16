@@ -47,7 +47,7 @@ app.use(express.urlencoded({extended:true})); // form data
 app.use(express.json());  // json data
 
 app.get('/' , (req,res)=>{
-    res.json('Welcome to chat-app');
+    res.send('Welcome to chat-app');
 })
 
 app.use(express.static('dist'))
